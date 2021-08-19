@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+}
+.buttonContainedTwitter {
+  --social-color: #1da1f2;
+}
+
+.buttonContainedInstagram {
+  --social-color: #e4405f;
+}
+
+.buttonContainedYoutube {
+  --social-color: #cd201f;
+}
+
+:where(.buttonContainedTwitter, .buttonContainedInstagram, .buttonContainedYoutube)
+  > .socialButton {
+  color: white;
+  background: var(--social-color) !important;
+}
+:where(.buttonContainedTwitter, .buttonContainedInstagram, .buttonContainedYoutube)
+  > .socialButton:hover {
+  background: var(--brand-01) !important;
+}
