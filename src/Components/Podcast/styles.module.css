@@ -1,0 +1,49 @@
+.podcastContainer {
+  width: var(--main-container-width);
+  max-width: 100%;
+  margin: auto;
+  padding: 0 50px;
+}
+.podcastEpisodes {
+  display: grid;
+  grid-template: 1fr / repeat(auto-fill, minmax(400px, 1fr));
+  gap: 50px 100px;
+  width: 100%;
+  padding: 50px 0;
+}
+.podcastEpisode {
+  display: grid;
+  overflow: hidden;
+  max-width: 100%;
+  height: 400px;
+  grid-template-areas:
+    'image title'
+    'image description';
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 200px 1fr;
+}
+.podcastEpisode > .thumbnail {
+  position: relative;
+  width: 100%;
+  grid-area: image;
+}
+.podcastEpisode > .thumbnail img {
+  height: 100%;
+}
+.podcastEpisode > :where(.title, .description) {
+  z-index: 2;
+  background: white;
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+}
+.podcastEpisode > .title {
+  grid-area: title;
+}
+.podcastEpisode > .description {
+  grid-area: description;
+}
+
+.podcastContainer h2 {
+  text-align: center;
+}
