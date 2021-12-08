@@ -5,11 +5,10 @@ import Logo from 'Assets/Logo.png';
 import GroupPhoto from 'Assets/GroupPhotoSimone.png';
 import { Podcast } from 'Components/Podcast';
 import { Footer } from 'Components/Footer';
-import { ThemeToggle } from 'Components/ThemeToggle';
 import { ThemeContext } from 'Shared/Context';
 
 export const Home: FC = () => {
-  const [theme, setTheme] = useState(true);
+  const [theme] = useState(true);
   return (
     <ThemeContext.Provider value={{ light: theme }}>
       <Toolbar>
@@ -21,7 +20,6 @@ export const Home: FC = () => {
         >
           <img src={Logo} alt='Group Photo'></img>
         </IconButton>
-        <ThemeToggle onClick={() => setTheme((lastTheme) => !lastTheme)} />
       </Toolbar>
 
       <div className={styles.container}>
