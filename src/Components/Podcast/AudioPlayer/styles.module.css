@@ -1,0 +1,19 @@
+.playBtn {
+  width: 40px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+.playBtn.playing .playBtn__svg {
+  fill: var(--brand-01);
+}
+.playBtn__svg {
+  transition: 1s;
+  fill: #7c7c7c;
+  opacity: 0.5;
+}
+
+.playBtn:hover .playBtn__svg {
+  fill: var(--brand-01);
+  opacity: 1;
+}
