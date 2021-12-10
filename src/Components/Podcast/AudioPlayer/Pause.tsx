@@ -5,7 +5,7 @@ import { PauseCircleFilled } from '@material-ui/icons';
 const Play: FC<{ handleClick?: React.MouseEventHandler }> = ({
   handleClick,
 }) => (
-  <button className={styles.playPause} onClick={handleClick}>
+  <button className={styles.pause_svg} onClick={handleClick}>
     <PauseCircleFilled />
   </button>
 );
