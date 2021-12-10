@@ -21,14 +21,12 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
     }
   }, [curTime]);
   useEffect(() => {
-    console.log({ playing, audioElementRef: audioElementRef.current });
     playing
       ? audioElementRef.current?.play()
       : audioElementRef.current?.pause();
   }, [playing, audioElementRef.current]);
 
   const setAudioData = () => {
-    console.log('setAudio');
     audioElementRef.current?.volume != 0.4;
     setVolume(audioElementRef.current?.volume || 0);
     setDuration(audioElementRef.current?.duration || 0);
@@ -40,8 +38,6 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
   };
 
   useEffect(() => {
-    // DOM listeners: update React state on DOM events
-    console.log('listen');
     audioElementRef.current?.addEventListener('loadeddata', () => {
       setAudioData();
       setPlaying(true);
