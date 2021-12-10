@@ -17,14 +17,17 @@
   opacity: 1;
 }
 .playPause svg {
+  width: 30px;
+  height: 30px;
+}
+.playPause :where(.playBtn__svg, .pause_svg) svg {
   width: 50px;
   height: 50px;
 }
-.playBtn__svg {
+.playBtn__svg svg,
+.pause_svg svg {
   color: var(--brand-01);
   transition: 1s;
-  fill: #7c7c7c;
-  opacity: 0.5;
 }
 .info {
   text-align: center;
@@ -70,6 +73,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
+  transform: translateY(12px);
   background: var(--brand-01);
   left: -50%;
   bottom: 0;
@@ -97,7 +101,16 @@
   right: 0;
   min-height: 90px;
   width: 100%;
-  background: black;
+  background: -webkit-linear-gradient(
+    242deg,
+    rgba(2, 0, 36, 1) 65%,
+    var(--brand-02) 100%
+  );
+  background: linear-gradient(
+    242deg,
+    rgba(2, 0, 36, 1) 65%,
+    var(--brand-02) 100%
+  );
   color: white;
 }
 @media only screen and (max-width: 600px) {
@@ -110,9 +123,9 @@
     background: black;
     color: white;
   }
-  .playPause svg {
-    width: 100px;
-    height: 100px;
+  .playPause :where(.playBtn__svg, .pause_svg) svg {
+    width: 75px;
+    height: 75px;
   }
   .barProgress {
     height: 25px;

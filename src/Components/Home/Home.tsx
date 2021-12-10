@@ -31,8 +31,8 @@ export const Home: FC = () => {
             <img src={GroupPhoto} alt='Group Photo'></img>
           </div>
         </div>
+        <Podcast />
       </div>
-      <Podcast />
     </ThemeContext.Provider>
   );
 };

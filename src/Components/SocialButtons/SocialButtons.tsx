@@ -34,18 +34,14 @@ const links = [
 export const SocialButtons: FC = () => {
   return (
     <Box
-      gridTemplateColumns={{ xs: '1fr 1fr 1fr', md: 'repeat(6, 1fr)' }}
-      gridGap={'5px 5px'}
-      sx={{ display: { xs: 'grid' } }}
+      flexBasis={{ xs: '55%' }}
+      flexWrap={'wrap'}
+      flexGrow={{ xs: '1' }}
+      sx={{ display: { xs: 'flex' } }}
     >
       {links.map((prop, key) => {
         return (
-          <Box
-            key={key}
-            display={{ xs: 'flex' }}
-
-            // className={styles[prop.color]}
-          >
+          <Box key={key} display={{ xs: 'flex' }} margin={'4px'}>
             <SocialIcon url={prop.href} network={prop.network} />
           </Box>
         );

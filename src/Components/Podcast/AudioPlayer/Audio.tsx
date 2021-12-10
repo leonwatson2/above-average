@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './styles.module.css';
 import { EpisodeType } from 'Shared/Types';
+import { Replay10, Forward10 } from '@material-ui/icons';
 
 import Song from './Song';
 import Play from './Play';
@@ -40,11 +41,13 @@ export const Audio = ({ episode }: { episode: EpisodeType }) => {
         />
       )}
       <div className={styles.playPause}>
+        <Replay10 onClick={() => setClickedTime(curTime - 10)} />
         {playing ? (
           <Pause handleClick={() => setPlaying(false)} />
         ) : (
           <Play handleClick={() => setPlaying(true)} />
         )}
+        <Forward10 onClick={() => setClickedTime(curTime + 10)} />
       </div>
       <div className={styles.controls}>
         <Bar

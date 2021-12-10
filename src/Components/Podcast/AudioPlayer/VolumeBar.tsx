@@ -50,13 +50,7 @@ export const VolumeBar = ({
   return (
     <div className={styles.volumeContainer} hidden={isMobile()}>
       <input type='checkbox' name='volume' id='volume' />
-      <div
-        style={{
-          boxShadow: `50% ${(volume || 0) * 100}% orange`,
-        }}
-        className={styles.volumeBar}
-        ref={barVolumeRef}
-      >
+      <div className={styles.volumeBar} ref={barVolumeRef}>
         <div
           onMouseDown={(e) => handleTimeDrag(e)}
           className={styles.volumeBall}
