@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
-import { IconButton, Toolbar } from '@material-ui/core';
+import { Box, IconButton, Toolbar } from '@material-ui/core';
 import styles from './styles.module.css';
 import Logo from 'Assets/Logo.png';
 import GroupPhoto from 'Assets/GroupPhotoSimone.png';
 import { Podcast } from 'Components/Podcast';
-import { Footer } from 'Components/Footer';
 import { ThemeContext } from 'Shared/Context';
+import { SocialButtons } from 'Components/SocialButtons';
 
 export const Home: FC = () => {
   const [theme] = useState(true);
@@ -20,6 +20,9 @@ export const Home: FC = () => {
         >
           <img src={Logo} alt='Group Photo'></img>
         </IconButton>
+        <Box sx={{ flexGrow: 1 }} />
+
+        <SocialButtons />
       </Toolbar>
 
       <div className={styles.container}>
@@ -30,7 +33,6 @@ export const Home: FC = () => {
         </div>
       </div>
       <Podcast />
-      <Footer />
     </ThemeContext.Provider>
   );
 };

@@ -1,49 +1,55 @@
 import React, { FC } from 'react';
 import { Box, Button } from '@material-ui/core';
-import { YouTube, Twitter, Instagram } from '@material-ui/icons';
+import { SocialIcon } from 'react-social-icons';
 import styles from './styles.module.css';
 
-const socialButtonColors = [
+const links = [
   {
-    icon: Twitter,
-    text: 'Twitter',
-    color: 'buttonContainedTwitter',
+    href: 'https://www.instagram.com/aboveavgscrubs/',
+    textContent: 'Instagram',
   },
   {
-    icon: Instagram,
-    text: 'Instagram',
-    color: 'buttonContainedInstagram',
+    href: 'https://www.youtube.com/channel/UCkCuImQNa6cLfUjHQOgOHiA?sub_confirmation=1',
+    textContent: 'YouTube',
   },
-
   {
-    icon: YouTube,
-    text: 'Youtube',
-    color: 'buttonContainedYoutube',
+    href: 'https://vm.tiktok.com/ZM87FypaJ/',
+    textContent: 'TikTok',
+  },
+  {
+    href: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hdmdzY3J1YnMucG9kb21hdGljLmNvbS9yc3MyLnhtbA',
+    textContent: 'Google Podcast',
+    network: 'google_play',
+  },
+  {
+    href: 'https://podcasts.apple.com/us/podcast/the-above-average-scrubs-podcast/id1570977091',
+    textContent: 'Apple Pocast',
+    network: 'itunes',
+  },
+  {
+    href: 'https://open.spotify.com/show/77jxcW6f9ToNSFXQRFB8kb',
+    textContent: 'Spotify',
   },
 ];
-
 export const SocialButtons: FC = () => {
   return (
-    <>
-      {socialButtonColors.map((prop, key) => {
+    <Box
+      gridTemplateColumns={{ xs: '1fr 1fr 1fr', md: 'repeat(6, 1fr)' }}
+      gridGap={'5px 5px'}
+      sx={{ display: { xs: 'grid' } }}
+    >
+      {links.map((prop, key) => {
         return (
           <Box
             key={key}
-            display='inline-block'
-            marginRight='1rem'
-            marginBottom='1rem'
-            className={styles[prop.color]}
+            display={{ xs: 'flex' }}
+
+            // className={styles[prop.color]}
           >
-            <Button
-              variant='contained'
-              className={styles.socialButton}
-              // onClick={}
-            >
-              <prop.icon />
-            </Button>
+            <SocialIcon url={prop.href} network={prop.network} />
           </Box>
         );
       })}
-    </>
+    </Box>
   );
 };
