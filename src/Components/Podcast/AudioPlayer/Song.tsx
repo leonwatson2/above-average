@@ -7,7 +7,7 @@ const Song: FC<{ songName: string; songArtist: string }> = ({
 }) => (
   <div className={styles.info}>
     <h3 className={styles.songTitle}>{songName}</h3>
-    <h4 className={styles.songArtist}>{songArtist}</h4>
+    <p className={styles.songArtist}>{songArtist}</p>
   </div>
 );
 

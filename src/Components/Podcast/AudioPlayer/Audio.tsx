@@ -18,22 +18,27 @@ export const Audio = ({ episode }: { episode: EpisodeType }) => {
     playing,
     setPlaying,
     setClickedTime,
+    setVolume,
     volume,
     error,
+    setError,
   } = useAudioPlayer(audioElementRef);
   useEffect(() => {
-    setPlaying(true);
+    setError(null);
+    setPlaying(false);
   }, [episode]);
-  if (error) return <h2>No Audio Selected</h2>;
   return (
     <div className={styles.player}>
+      {error && <h2 className={styles.info}>Error Loading Audio</h2>}
       <audio ref={audioElementRef} src={episode?.file}>
         Your browser does not support the <code>audio</code> element.
       </audio>
-      <Song
-        songName={episode?.title || ''}
-        songArtist={episode?.description || ''}
-      />
+      {!error && (
+        <Song
+          songName={episode?.title || ''}
+          songArtist={episode?.description || ''}
+        />
+      )}
       <div className={styles.playPause}>
         {playing ? (
           <Pause handleClick={() => setPlaying(false)} />
@@ -47,8 +52,13 @@ export const Audio = ({ episode }: { episode: EpisodeType }) => {
           duration={duration}
           onTimeUpdate={(time) => setClickedTime(time)}
         />
-        <VolumeBar volume={volume} />
       </div>
+      <VolumeBar
+        onChangeVolume={(v) => {
+          setVolume(v);
+        }}
+        volume={volume}
+      />
     </div>
   );
 };

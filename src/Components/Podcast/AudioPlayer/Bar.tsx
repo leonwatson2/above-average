@@ -1,6 +1,7 @@
 import React, { FC, useRef } from 'react';
 import moment from 'moment';
 import styles from './styles.module.css';
+import cx from 'classnames';
 
 const Bar: FC<{
   duration: number;
@@ -49,7 +50,9 @@ const Bar: FC<{
 
   return (
     <div className={styles.bar}>
-      <span className={styles.barTime}>{formatDuration(curTime)}</span>
+      <span className={cx(styles.barTime, styles.curTime)}>
+        {formatDuration(curTime)}
+      </span>
       <div
         className={styles.barProgress}
         ref={barProgressRef}
@@ -63,7 +66,9 @@ const Bar: FC<{
           style={{ left: `${curPercentage - 2}%` }}
         />
       </div>
-      <span className={styles.barTime}>{formatDuration(duration)}</span>
+      <span className={cx(styles.barTime, styles.duration)}>
+        {formatDuration(duration)}
+      </span>
     </div>
   );
 };
