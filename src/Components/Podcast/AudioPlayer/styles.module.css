@@ -57,6 +57,8 @@
 .volumeContainer {
   grid-area: volume;
   position: relative;
+  align-self: center;
+  justify-self: center;
 }
 .volumeContainer input[type='checkbox'] {
   display: none;
@@ -66,17 +68,23 @@
   background: #fff;
   bottom: 0;
   border-radius: 10px 10px 10px 10px;
-  height: 150px;
-  width: 6px;
+  width: 150px;
+  height: 6px;
+}
+.icon {
+  position: absolute;
+  left: -30px;
+  bottom: 0;
+  transform: translateY(50%);
 }
 .volumeBall {
   position: absolute;
   width: 12px;
   height: 12px;
-  transform: translateY(12px);
+  transform: translateX(-5px);
   background: var(--brand-01);
-  left: -50%;
-  bottom: 0;
+  bottom: -50%;
+  left: 0;
   border-radius: 10px;
 }
 .barTime,
@@ -114,14 +122,15 @@
   color: white;
 }
 @media only screen and (max-width: 600px) {
+  .volumeContainer {
+    justify-self: start;
+  }
   .player {
     position: fixed;
     z-index: 699;
     bottom: 0;
     min-height: 200px;
     width: 100%;
-    background: black;
-    color: white;
   }
   .playPause :where(.playBtn__svg, .pause_svg) svg {
     width: 75px;

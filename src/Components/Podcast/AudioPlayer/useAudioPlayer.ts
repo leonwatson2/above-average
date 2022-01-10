@@ -19,7 +19,7 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
       }
       setClickedTime(null);
     }
-  }, [curTime]);
+  }, [curTime, clickedTime]);
   useEffect(() => {
     playing
       ? audioElementRef.current?.play()
