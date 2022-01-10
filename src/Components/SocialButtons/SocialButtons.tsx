@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { Box, Button } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
-import styles from './styles.module.css';
 
 const links = [
   {
@@ -30,6 +29,10 @@ const links = [
     href: 'https://open.spotify.com/show/77jxcW6f9ToNSFXQRFB8kb',
     textContent: 'Spotify',
   },
+  {
+    href: 'https://discord.gg/PkJuM2JG',
+    textContent: 'Discord',
+  },
 ];
 export const SocialButtons: FC = () => {
   return (
@@ -37,6 +40,7 @@ export const SocialButtons: FC = () => {
       flexBasis={{ xs: '55%' }}
       flexWrap={'wrap'}
       flexGrow={{ xs: '1' }}
+      justifyContent={'end'}
       sx={{ display: { xs: 'flex' } }}
     >
       {links.map((prop, key) => {
