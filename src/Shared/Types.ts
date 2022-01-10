@@ -3,4 +3,5 @@ export type EpisodeType = {
   file: string;
   image: string | null;
   description: string;
+  number: number;
 } | null;

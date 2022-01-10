@@ -124,9 +124,13 @@
 @media only screen and (max-width: 600px) {
   .volumeContainer {
     justify-self: start;
+    height: 15px;
+    margin: 15px 0;
   }
   .player {
     position: fixed;
+    grid-template-areas: 'info info info' '. playPause .' '. volume .' 'controls controls controls';
+
     z-index: 699;
     bottom: 0;
     min-height: 200px;
@@ -138,5 +142,11 @@
   }
   .barProgress {
     height: 25px;
+  }
+  .volumeBar {
+    left: 10px;
+  }
+  .icon {
+    left: -20px;
   }
 }

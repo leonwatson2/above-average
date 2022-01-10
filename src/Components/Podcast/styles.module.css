@@ -1,3 +1,6 @@
+:root {
+  --podcastPlayButtonSize: 60px;
+}
 .podcastContainer {
   width: var(--main-container-width);
   max-width: 100%;
@@ -12,6 +15,7 @@
   padding: 50px 0;
 }
 .podcastEpisode {
+  position: relative;
   display: grid;
   overflow: hidden;
   max-width: 100%;
@@ -22,6 +26,70 @@
   grid-template-rows: 1fr 4fr;
   grid-template-columns: 200px 1fr;
 }
+.podcastEpisode svg {
+  width: var(--podcastPlayButtonSize);
+  height: var(--podcastPlayButtonSize);
+  transform-origin: bottom left;
+  background: rgba(255, 255, 255, 0.5);
+
+  transition: 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.podcastEpisode > :where(svg, .equalizer) {
+  align-self: flex-end;
+  grid-row: 2;
+  grid-column: 1;
+  z-index: 33;
+}
+.podcastEpisode:hover svg {
+  transform: scale(1.75);
+}
+.podcastEpisode.selected svg {
+  display: none;
+}
+
+.equalizer {
+  display: none;
+  z-index: 33;
+  width: var(--podcastPlayButtonSize);
+  height: var(--podcastPlayButtonSize);
+  transform-origin: bottom left;
+  background: rgba(255, 255, 255, 0.5);
+}
+.podcastEpisode.selected .equalizer {
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+  padding: 0 2px;
+  align-items: flex-end;
+}
+.equalizer .bar {
+  height: calc(var(--podcastPlayButtonSize) - 5px);
+  width: 15px;
+  background: var(--brand-01);
+  animation-name: equalize;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.equalizer .bar:last-of-type {
+  animation-delay: 0.3s;
+}
+.equalizer .bar:first-of-type {
+  animation-delay: 0.2s;
+}
+@keyframes equalize {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .podcastContainer {
@@ -31,6 +99,13 @@
     grid-template-rows: 3rem 2fr 1fr;
     grid-template-areas: 'title title' 'image image' 'description description';
     height: auto;
+  }
+  .podcastEpisode > :where(svg, .equalizer) {
+    align-self: flex-start;
+  }
+
+  .podcastEpisode:hover svg {
+    transform: scale(1);
   }
 }
 @media only screen and (max-width: 400px) {
