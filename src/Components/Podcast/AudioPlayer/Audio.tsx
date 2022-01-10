@@ -11,7 +11,13 @@ import VolumeBar from './VolumeBar';
 
 import useAudioPlayer from './useAudioPlayer';
 
-export const Audio = ({ episode }: { episode: EpisodeType }) => {
+export const Audio = ({
+  episode,
+  setLatestEpisode,
+}: {
+  episode: EpisodeType;
+  setLatestEpisode: () => void;
+}) => {
   const audioElementRef = useRef<HTMLAudioElement>(null);
   const {
     curTime,
@@ -45,7 +51,14 @@ export const Audio = ({ episode }: { episode: EpisodeType }) => {
         {playing ? (
           <Pause handleClick={() => setPlaying(false)} />
         ) : (
-          <Play handleClick={() => setPlaying(true)} />
+          <Play
+            handleClick={() => {
+              if (!episode) {
+                setLatestEpisode();
+              }
+              setPlaying(true);
+            }}
+          />
         )}
         <Forward10 onClick={() => setClickedTime(curTime + 10)} />
       </div>
