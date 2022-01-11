@@ -47,11 +47,17 @@ export const Audio = ({
         />
       )}
       <div className={styles.playPause}>
-        <Replay10 onClick={() => setClickedTime(curTime - 10)} />
+        <Replay10
+          aria-label={'back-10-seconds'}
+          tabIndex={0}
+          onClick={() => setClickedTime(curTime - 10)}
+          onKeyPress={(e) => e.key === 'Enter' && setClickedTime(curTime - 10)}
+        />
         {playing ? (
           <Pause handleClick={() => setPlaying(false)} />
         ) : (
           <Play
+            aria-label={'play'}
             handleClick={() => {
               if (!episode) {
                 setLatestEpisode();
@@ -60,7 +66,12 @@ export const Audio = ({
             }}
           />
         )}
-        <Forward10 onClick={() => setClickedTime(curTime + 10)} />
+        <Forward10
+          aria-label={'forward-10-seconds'}
+          tabIndex={0}
+          onClick={() => setClickedTime(curTime + 10)}
+          onKeyPress={(e) => e.key === 'Enter' && setClickedTime(curTime + 10)}
+        />
       </div>
       <div className={styles.controls}>
         <Bar

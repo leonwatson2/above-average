@@ -45,11 +45,33 @@ export const SocialButtons: FC = () => {
     >
       {links.map((prop, key) => {
         return (
-          <Box key={key} display={{ xs: 'flex' }} margin={'4px'}>
+          <Box
+            title={prop.textContent}
+            key={key}
+            display={{ xs: 'flex' }}
+            margin={'4px'}
+          >
             <SocialIcon url={prop.href} network={prop.network} />
           </Box>
         );
       })}
+
+      <Box
+        display={{ xs: 'flex' }}
+        margin={'4px'}
+        title={'us@aboveaveragescrubs.com'}
+      >
+        <a
+          href=''
+          onClick={() => {
+            const email = document.createElement('a');
+            email.href = 'mailto:us@aboveaveragescrubs.com';
+            email.click();
+          }}
+        >
+          <SocialIcon network={'email'} />
+        </a>
+      </Box>
     </Box>
   );
 };

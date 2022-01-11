@@ -33,6 +33,7 @@
   text-align: center;
   grid-area: info;
 }
+
 .playPause {
   color: var(--brand-01);
 

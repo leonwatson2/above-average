@@ -6,7 +6,16 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
   const [error, setError] = useState<null | string>(null);
   const [playing, setPlaying] = useState(false);
   const [clickedTime, setClickedTime] = useState<number | null>(0);
-  const [volume, setVolume] = useState<number | undefined>(1);
+  const [volume, setVolume] = useState<number | undefined>(0.6);
+
+  const changeVolume = (newVolume: number) => {
+    newVolume > 1
+      ? setVolume(1)
+      : newVolume < 0
+      ? setVolume(0)
+      : setVolume(newVolume);
+  };
+
   useEffect(() => {
     if (audioElementRef?.current) {
       audioElementRef.current.volume = volume || 0;
@@ -65,7 +74,7 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
     setPlaying,
     setClickedTime,
     volume,
-    setVolume,
+    setVolume: changeVolume,
   };
 };
 

@@ -70,6 +70,13 @@ export const VolumeBar = ({
         ref={barVolumeRef}
       >
         <div
+          tabIndex={0}
+          onKeyDown={(e) => {
+            console.log(volume || 0);
+
+            e.key === 'ArrowLeft' && onChangeVolume((volume || 0) - 0.1);
+            e.key === 'ArrowRight' && onChangeVolume((volume || 0) + 0.1);
+          }}
           onMouseDown={(e) => handleTimeDrag(e)}
           className={styles.volumeBall}
           style={{
