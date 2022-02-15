@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Box, IconButton, Toolbar } from '@material-ui/core';
 import styles from './styles.module.css';
 
@@ -10,8 +10,9 @@ import GroupPhoto from 'Assets/GroupPhotoSimone.png';
 import Logo from 'Assets/Logo.png';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { EpisodeType } from 'Shared/Types';
 
-export const Home: FC = () => {
+export const Home: FC<{ episodes: Array<EpisodeType> }> = ({ episodes }) => {
   const [theme] = useState(true);
   return (
     <ThemeContext.Provider value={{ light: theme }}>
@@ -35,7 +36,7 @@ export const Home: FC = () => {
             <img src={GroupPhoto} alt='Group Photo'></img>
           </div>
         </div>
-        <Podcast />
+        <Podcast episodes={episodes} />
         <ToastContainer />
       </div>
     </ThemeContext.Provider>

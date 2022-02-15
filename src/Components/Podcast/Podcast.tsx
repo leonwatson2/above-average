@@ -1,20 +1,15 @@
-import React, { FC, useEffect, useState } from 'react';
-import cx from 'classnames';
+import React, { FC, useState } from 'react';
 import { PlayArrowRounded as PlayButton } from '@material-ui/icons';
+import cx from 'classnames';
+
 import styles from './styles.module.css';
+
 import PodcastStock from 'Assets/podcast-stock.jpg';
 import { EpisodeType } from 'Shared/Types';
 import { AudioPlayer } from './AudioPlayer';
-import { getSheetData } from 'Shared/googleapi';
-export const Podcast: FC = () => {
-  const [playingEpisode, setEpisode] = useState<EpisodeType>(null);
-  const [episodes, setEpisodes] = useState<Array<EpisodeType>>([]);
-  useEffect(() => {
-    getSheetData().then((episodes) => {
-      setEpisodes(episodes.sort((a, b) => b.number - a.number));
-    });
-  }, []);
 
+export const Podcast: FC<{ episodes: Array<EpisodeType> }> = ({ episodes }) => {
+  const [playingEpisode, setEpisode] = useState<EpisodeType>(null);
   return (
     <div className={styles.podcastContainer}>
       <h2>PODCAST</h2>

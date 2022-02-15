@@ -1,4 +1,5 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { SocialLinkType } from 'Shared/Types';
 
 export const getSheetData = async () => {
   const doc = new GoogleSpreadsheet(
@@ -9,8 +10,16 @@ export const getSheetData = async () => {
     private_key: process.env.REACT_APP_PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
   });
   await doc.loadInfo();
-  const rows = await doc.sheetsByIndex[0].getRows();
-  return rows
+  const episodeRows = await doc.sheetsByIndex[0].getRows();
+  const socialRows = await doc.sheetsByTitle['Socials'].getRows();
+  const socials = socialRows
+    .filter((social) => social.link && social['Display Name'])
+    .map((social) => ({
+      textContent: social['Display Name'],
+      href: social.link,
+      ...(social.network ? { network: social.network } : {}),
+    }));
+  const episodes = episodeRows
     .filter((row) => row.show === 'TRUE')
     .map((row) => ({
       file: row.file,
@@ -20,4 +29,9 @@ export const getSheetData = async () => {
       number: row['#'],
       show: true,
     }));
+
+  return {
+    episodes,
+    socials,
+  };
 };

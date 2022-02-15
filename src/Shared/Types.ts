@@ -5,3 +5,9 @@ export type EpisodeType = {
   description: string;
   number: number;
 } | null;
+
+export type SocialLinkType = {
+  href: string;
+  textContent: string;
+  network?: string;
+};

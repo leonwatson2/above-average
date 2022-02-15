@@ -1,1 +1,1 @@
-export { SocialButtons, links as SocialLinks } from './SocialButtons';
+export { SocialButtons } from './SocialButtons';

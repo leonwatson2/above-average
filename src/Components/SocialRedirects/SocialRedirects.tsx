@@ -1,13 +1,14 @@
-import { SocialLinks } from 'Components/SocialButtons';
 import React, { FC, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useSocialLinks } from 'utils/SocialLinkContext';
 
 export const SocialRedirects: FC = () => {
+  const socialLinks = useSocialLinks();
   const { socialAccount } = useParams<{ socialAccount: string }>();
 
   const navigate = useNavigate();
   const redirectRef = useRef<HTMLAnchorElement>();
-  const acccount = SocialLinks.find(
+  const acccount = socialLinks.find(
     (account) =>
       account.textContent.toLowerCase().replaceAll(' ', '-') ===
       socialAccount.toLowerCase()
