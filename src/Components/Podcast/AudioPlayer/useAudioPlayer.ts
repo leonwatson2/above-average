@@ -54,7 +54,6 @@ const useAudioPlayer = (audioElementRef: React.RefObject<HTMLAudioElement>) => {
 
     audioElementRef.current?.addEventListener('timeupdate', setAudioTime);
     audioElementRef.current?.addEventListener('error', () => {
-      console.log(audioElementRef.current?.error);
       setError('Error happened');
     });
 

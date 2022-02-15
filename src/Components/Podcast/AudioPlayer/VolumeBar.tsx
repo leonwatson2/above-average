@@ -30,7 +30,6 @@ export const VolumeBar = ({
     if (volume) changeLastVolume(volume);
   }, [volume, changeLastVolume]);
   const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log('f');
     onChangeVolume(calcClickedVolume(e, barVolumeRef));
 
     const updateTimeOnMove = (eMove: MouseEvent) => {
@@ -69,8 +68,6 @@ export const VolumeBar = ({
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            console.log(volume || 0);
-
             e.key === 'ArrowLeft' && onChangeVolume((volume || 0) - 0.1);
             e.key === 'ArrowRight' && onChangeVolume((volume || 0) + 0.1);
           }}

@@ -18,7 +18,6 @@ const App: FC = () => {
     getSheetData().then((data) => {
       setEpisodes(data.episodes.sort((a, b) => b.number - a.number));
       setSocials(data.socials);
-      console.log(data.socials);
     });
   }, []);
   return (
