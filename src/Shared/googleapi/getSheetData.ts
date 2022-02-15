@@ -1,6 +1,8 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { SocialLinkType } from 'Shared/Types';
 
+const mp3AssetFolder = '/assets/episodes/';
+
 export const getSheetData = async () => {
   const doc = new GoogleSpreadsheet(
     '1Uxv7C9f7S4bYqS3eOr6id3qLW4rwor20W6GjEY5UmQg'
@@ -22,7 +24,7 @@ export const getSheetData = async () => {
   const episodes = episodeRows
     .filter((row) => row.show === 'TRUE')
     .map((row) => ({
-      file: row.file,
+      file: mp3AssetFolder + row.file,
       image: row.image,
       title: row.title,
       description: row.description,
