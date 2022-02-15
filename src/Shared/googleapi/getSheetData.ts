@@ -10,12 +10,14 @@ export const getSheetData = async () => {
   });
   await doc.loadInfo();
   const rows = await doc.sheetsByIndex[0].getRows();
-
-  return rows.map((row) => ({
-    file: '/assets/episodes/' + row.file,
-    image: row.image,
-    title: row.title,
-    description: row.description,
-    number: row['#'],
-  }));
+  return rows
+    .filter((row) => row.show === 'TRUE')
+    .map((row) => ({
+      file: row.file,
+      image: row.image,
+      title: row.title,
+      description: row.description,
+      number: row['#'],
+      show: true,
+    }));
 };

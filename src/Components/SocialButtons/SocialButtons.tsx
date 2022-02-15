@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 import { Box } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
+import { isMobile } from 'Shared/utils';
+import { toast } from 'react-toastify';
+import { Outlet } from 'react-router-dom';
+import styles from './styles.module.css';
 
-const links = [
+export const links = [
   {
     href: 'https://www.instagram.com/aboveavgscrubs/',
     textContent: 'Instagram',
@@ -35,6 +39,21 @@ const links = [
   },
 ];
 export const SocialButtons: FC = () => {
+  const emailToast = () =>
+    toast.info('Copied to Clipboard', {
+      position: toast.POSITION.TOP_CENTER,
+      className: styles.toast,
+    });
+  const emailAction = () => {
+    if (isMobile()) {
+      const email = document.createElement('a');
+      email.href = 'mailto:us@aboveaveragescrubs.com';
+      email.click();
+    } else {
+      navigator.clipboard.writeText('us@aboveaveragescrubs.com');
+      emailToast();
+    }
+  };
   return (
     <Box
       flexBasis={{ xs: '55%' }}
@@ -46,32 +65,32 @@ export const SocialButtons: FC = () => {
       {links.map((prop, key) => {
         return (
           <Box
+            tabIndex={0}
             title={prop.textContent}
             key={key}
             display={{ xs: 'flex' }}
             margin={'4px'}
+            className={styles.socialButton}
           >
-            <SocialIcon url={prop.href} network={prop.network} />
+            <SocialIcon tabIndex={-1} url={prop.href} network={prop.network} />
           </Box>
         );
       })}
 
       <Box
+        tabIndex={0}
         display={{ xs: 'flex' }}
         margin={'4px'}
+        style={{ cursor: 'pointer' }}
         title={'us@aboveaveragescrubs.com'}
+        onClick={() => {
+          emailAction();
+        }}
+        onKeyPress={(e) => e.key === 'Enter' && emailAction()}
       >
-        <a
-          href=''
-          onClick={() => {
-            const email = document.createElement('a');
-            email.href = 'mailto:us@aboveaveragescrubs.com';
-            email.click();
-          }}
-        >
-          <SocialIcon network={'email'} />
-        </a>
+        <SocialIcon network={'email'} />
       </Box>
+      <Outlet />
     </Box>
   );
 };

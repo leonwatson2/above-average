@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import { VolumeOff, VolumeUp } from '@material-ui/icons';
-const isMobile = () =>
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+import { isMobile } from 'Shared/utils';
 
 const calcClickedVolume: (
   e: MouseEvent | React.MouseEvent,

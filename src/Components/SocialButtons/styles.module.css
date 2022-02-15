@@ -12,13 +12,12 @@
 .buttonContainedYoutube {
   --social-color: #cd201f;
 }
-
-:where(.buttonContainedTwitter, .buttonContainedInstagram, .buttonContainedYoutube)
-  > .socialButton {
-  color: white;
-  background: var(--social-color) !important;
+.socialButton {
+  transition: 0.3s cubic-bezier(0.895, 1, 0.685, 0.22);
 }
-:where(.buttonContainedTwitter, .buttonContainedInstagram, .buttonContainedYoutube)
-  > .socialButton:hover {
-  background: var(--brand-01) !important;
+.socialButton:where(:hover, :focus) {
+  opacity: 0.6;
+}
+.toast {
+  --toastify-text-color-info: var(--brand-01);
 }

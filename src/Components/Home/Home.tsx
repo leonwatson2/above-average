@@ -1,11 +1,15 @@
 import React, { FC, useState } from 'react';
 import { Box, IconButton, Toolbar } from '@material-ui/core';
 import styles from './styles.module.css';
-import Logo from 'Assets/Logo.png';
-import GroupPhoto from 'Assets/GroupPhotoSimone.png';
+
 import { Podcast } from 'Components/Podcast';
-import { ThemeContext } from 'Shared/Context';
 import { SocialButtons } from 'Components/SocialButtons';
+import { ThemeContext } from 'Shared/Context';
+import { ToastContainer } from 'react-toastify';
+import GroupPhoto from 'Assets/GroupPhotoSimone.png';
+import Logo from 'Assets/Logo.png';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Home: FC = () => {
   const [theme] = useState(true);
@@ -32,6 +36,7 @@ export const Home: FC = () => {
           </div>
         </div>
         <Podcast />
+        <ToastContainer />
       </div>
     </ThemeContext.Provider>
   );

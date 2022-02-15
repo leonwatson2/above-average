@@ -76,9 +76,10 @@
   display: none;
 }
 
+.podcastEpisode .number,
 .podcastEpisode .number::first-letter {
-  color: var(--brand-02);
-  font-size: 4em;
+  color: var(--brand-02) !important;
+  font-size: 6rem;
 }
 .podcastEpisode .number {
   line-height: 1;
