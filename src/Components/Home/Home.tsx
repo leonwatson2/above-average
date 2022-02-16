@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import { Box, IconButton, Toolbar } from '@material-ui/core';
 import styles from './styles.module.css';
 
