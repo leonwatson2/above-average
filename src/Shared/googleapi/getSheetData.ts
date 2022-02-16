@@ -1,7 +1,6 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-import { SocialLinkType } from 'Shared/Types';
 
-const mp3AssetFolder = '/assets/episodes/';
+const mp3AssetFolder = process.env.REACT_APP_ASSET_URL + '/assets/episodes/';
 
 export const getSheetData = async () => {
   const doc = new GoogleSpreadsheet(
